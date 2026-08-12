@@ -1,0 +1,31 @@
+{
+  "schema": "flagship-disney-media/v1",
+  "generated_at_utc": "2026-08-12T00:00:00Z",
+  "summary": {
+    "clips": 100,
+    "posters": 100,
+    "files": 200,
+    "bytes": 642655492,
+    "mebibytes": 612.884
+  },
+  "clips": {
+    "directory": "disney2/clips/",
+    "first": "DSN2-001.mp4",
+    "last": "DSN2-100.mp4",
+    "bytes": 626621277,
+    "format": "H.264 High L3.1, 1358x624, 30 fps, 150 frames, 5 seconds, no audio"
+  },
+  "posters": {
+    "directory": "disney2/posters/",
+    "first": "kf-01.jpg",
+    "last": "kf-100.jpg",
+    "bytes": 16034215,
+    "format": "JPEG"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "digest": "d2fcfdd3f2beb1069b7c7e7ac8b6bf9d698c7a3f0d59ad84182692d044e05cd9",
+    "canonical_order": "clips 001-100, then posters 01-100",
+    "record_format": "<sha256>  <bytes>  <relative-path>\\n"
+  }
+}

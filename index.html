@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Disney Edition II · Media</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #080807;
+      color: #f4ead2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(187, 142, 63, .18), transparent 34rem),
+        linear-gradient(180deg, #10100e, #050504);
+    }
+    main {
+      width: min(720px, 100%);
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid rgba(225, 188, 113, .28);
+      border-radius: 24px;
+      background: rgba(15, 14, 11, .86);
+      box-shadow: 0 26px 90px rgba(0, 0, 0, .48);
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: #d9b56d;
+      font-size: .76rem;
+      font-weight: 750;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 9vw, 5.4rem);
+      font-weight: 400;
+      line-height: .92;
+      letter-spacing: -.045em;
+    }
+    .summary {
+      margin: 24px 0 0;
+      max-width: 55ch;
+      color: #c9c0ad;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    dl {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 34px 0 0;
+    }
+    dl div {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid rgba(225, 188, 113, .16);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .025);
+    }
+    dt {
+      color: #8f887a;
+      font-size: .68rem;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    dd {
+      overflow: hidden;
+      margin: 8px 0 0;
+      color: #f7e5bd;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 4vw, 2rem);
+      text-overflow: ellipsis;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid #b99248;
+      border-radius: 999px;
+      color: #f4ddb0;
+      text-decoration: none;
+    }
+    a:hover, a:focus-visible { background: rgba(185, 146, 72, .14); }
+    #state[data-state="error"] { color: #ffb5a9; }
+    @media (max-width: 520px) {
+      dl { grid-template-columns: 1fr; }
+      main { border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Flagship portfolio · Runtime delivery</p>
+    <h1>Disney<br>Edition II</h1>
+    <p class="summary" id="state" aria-live="polite">Checking the published media manifest…</p>
+    <dl aria-label="Published media summary">
+      <div><dt>Clips</dt><dd id="clips">—</dd></div>
+      <div><dt>Posters</dt><dd id="posters">—</dd></div>
+      <div><dt>Payload</dt><dd id="size">—</dd></div>
+    </dl>
+    <nav aria-label="Media links">
+      <a href="media-manifest.json">Integrity manifest</a>
+      <a href="disney2/clips/DSN2-001.mp4">First clip</a>
+      <a href="https://mohamed3042.github.io/flagship-portfolio/worlds/disney.html">Open the film</a>
+    </nav>
+  </main>
+  <script>
+    const state = document.querySelector('#state');
+    fetch('media-manifest.json', { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(manifest => {
+        document.querySelector('#clips').textContent = manifest.summary.clips;
+        document.querySelector('#posters').textContent = manifest.summary.posters;
+        document.querySelector('#size').textContent = `${manifest.summary.mebibytes.toFixed(1)} MiB`;
+        state.textContent = 'The complete 100-shot runtime package is online and ready for ranged browser delivery.';
+        state.dataset.state = 'ready';
+      })
+      .catch(error => {
+        state.textContent = `The media manifest could not be loaded: ${error.message}`;
+        state.dataset.state = 'error';
+      });
+  </script>
+</body>
+</html>
