@@ -1,19 +1,19 @@
 {
   "schema": "flagship-disney-media/v1",
-  "generated_at_utc": "2026-08-12T00:00:00Z",
+  "generated_at_utc": "2026-10-09T16:10:36Z",
   "summary": {
     "clips": 100,
     "posters": 100,
     "files": 200,
-    "bytes": 642655492,
-    "mebibytes": 612.884
+    "bytes": 895653269,
+    "mebibytes": 854.162
   },
   "clips": {
     "directory": "disney2/clips/",
     "first": "DSN2-001.mp4",
     "last": "DSN2-100.mp4",
-    "bytes": 626621277,
-    "format": "H.264 High L3.1, 1358x624, 30 fps, 150 frames, 5 seconds, no audio"
+    "bytes": 879619054,
+    "format": "H.264 High L4.2, 1920x882, 30 fps, 150 frames, 5 seconds, no audio (Topaz Proteus 2x upscale of the 1358x624 masters)"
   },
   "posters": {
     "directory": "disney2/posters/",
@@ -24,7 +24,7 @@
   },
   "integrity": {
     "algorithm": "SHA-256",
-    "digest": "d2fcfdd3f2beb1069b7c7e7ac8b6bf9d698c7a3f0d59ad84182692d044e05cd9",
+    "digest": "ae51cde6b801da6ed9fa69a3fa17276b2eea6c55b792e7fedca34980cfbf0e44",
     "canonical_order": "clips 001-100, then posters 01-100",
     "record_format": "<sha256>  <bytes>  <relative-path>\\n"
   }
